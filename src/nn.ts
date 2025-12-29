@@ -193,6 +193,22 @@ export class Activations {
     },
     compileToJs: arg => `mish(${arg})`
   };
+  public static ANT: ActivationFunction = {
+    output: x => x * Math.exp(-Math.abs(x) / 6.0),
+    der: x => {
+      const absX = Math.abs(x);
+      const expTerm = Math.exp(-absX / 6.0);
+      
+      if (x > 0) {
+        return expTerm * (1 - x / 6.0);
+      } else if (x < 0) {
+        return expTerm * (1 + x / 6.0);
+      } else {
+        return 1;
+      }
+    },
+    compileToJs: arg => `(${arg} * Math.exp(-Math.abs(${arg}) / 6.0))`
+  };
 }
 
 /** Built-in regularization functions */
