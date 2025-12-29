@@ -2,11 +2,19 @@
 
 The Neural Network Playground is an interactive visualization of neural networks, written in TypeScript using d3.js. Please use GitHub issues for questions, requests, and bugs. Your feedback is highly appreciated!
 
-## Modifications from [original repo](https://github.com/tensorflow/playground)
-- added ANT activation functions
-  
-Regarding the ANT activation mechanism, please refer to the following references：
+## Modifications from [original repo](https://dcato98.github.io/playground)
+- added ANT activation function
+## ANT activation function
+This repository contains the ANT for the paper [Neuron signal attenuation activation mechanism for deep learning](https://www.cell.com/patterns/fulltext/S2666-3899(24)00289-7).
+## Introduction
+Signal activation in neurons, whereby intricate biochemical pathways and signaling mechanisms can produce different outputs from subtle changes, constitute complex systems to study. The output state varies based on activity patterns, reflecting plasticity. From neuroplasticity, neuron signal activation resembles a “black-box” core with dynamic input-output behavior, integrating and transforming signals from other neurons with varying transmission patterns. Although the neural mechanisms underlying this dynamic behavior are not fully understood, they reflect a wide range of neuronal properties. We test this hypothesis from a generalized linear system perspective by constructing computational models of neuronal activation, which enhances our understanding of the signal-processing properties of generalized neurons. Our results demonstrate strong performance across various neural network architectures.
+<img width="986" height="1020" alt="image" src="https://github.com/user-attachments/assets/385468a5-0443-49d1-aa4b-52060aad130e" />
+
+## Citation：
 [1] Jiang W , Yuan H , Liu W .Neuron signal attenuation activation mechanism for deep learning[J].Patterns, 2025, 6(1).DOI:10.1016/j.patter.2024.101117.
+
+@article{Jiang W , Yuan H , Liu W .Neuron signal attenuation activation mechanism for deep learning[J].Patterns, 2025, 6(1).DOI:10.1016/j.patter.2024.101117.
+}
 
 ## Development
 
