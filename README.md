@@ -4,6 +4,9 @@ The Neural Network Playground is an interactive visualization of neural networks
 
 ## Modifications from [original repo](https://github.com/tensorflow/playground)
 - added ANT activation functions
+  
+Regarding the ANT activation mechanism, please refer to the following references,
+[1] Jiang W , Yuan H , Liu W .Neuron signal attenuation activation mechanism for deep learning[J].Patterns, 2025, 6(1).DOI:10.1016/j.patter.2024.101117.
 
 ## Development
 
