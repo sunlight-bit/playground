@@ -11,10 +11,7 @@ Signal activation in neurons, whereby intricate biochemical pathways and signali
 <img width="986" height="1020" alt="image" src="https://github.com/user-attachments/assets/385468a5-0443-49d1-aa4b-52060aad130e" />
 
 ## Citation：
-[1] Jiang W , Yuan H , Liu W .Neuron signal attenuation activation mechanism for deep learning[J].Patterns, 2025, 6(1).DOI:10.1016/j.patter.2024.101117.
-
-@article{Jiang W , Yuan H , Liu W .Neuron signal attenuation activation mechanism for deep learning[J].Patterns, 2025, 6(1).DOI:10.1016/j.patter.2024.101117.
-}
+Jiang W , Yuan H , Liu W .Neuron signal attenuation activation mechanism for deep learning[J].Patterns, 2025, 6(1),101117.DOI:10.1016/j.patter.2024.101117.
 
 ## Development
 
