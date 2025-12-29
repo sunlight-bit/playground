@@ -29,7 +29,8 @@ export let activations: {[key: string]: nn.ActivationFunction} = {
   "linear": nn.Activations.LINEAR,
   "sine": nn.Activations.SINE,
   "sinc": nn.Activations.SINC,
-  "mish": nn.Activations.MISH
+  "mish": nn.Activations.MISH,
+  "ant": nn.Activations.ANT
 };
 
 /** A map between names and regularization functions. */
