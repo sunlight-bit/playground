@@ -80,7 +80,7 @@ class Ant(Layer):
 ```
 ## Citation：
 ```
-Jiang W , Yuan H , Liu W .Neuron signal attenuation activation mechanism for deep learning[J].Patterns, 2025, 6(1),101117.DOI:10.1016/j.patter.2024.101117.
+Jiang W, Yuan H, Liu W.Neuron signal attenuation activation mechanism for deep learning[J].Patterns, 2025, 6(1),101117.DOI:10.1016/j.patter.2024.101117.
 ```
 
 ## Development
