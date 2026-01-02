@@ -14,6 +14,7 @@ Signal activation in neurons, whereby intricate biochemical pathways and signali
 ```
 import torch
 import torch.nn as nn
+
 class Ant(nn.Module):
     """Signal attenuation function: x * exp(-|x|/t)"""    
     def __init__(self, t=6.0, mode="both"):
@@ -25,19 +26,17 @@ class Ant(nn.Module):
         super().__init__()
         self.t = t
         self.mode = mode
-        
+
     def forward(self, x):
         # Core computation
-        y = x * torch.exp(-torch.abs(x) / self.t)
-        
+        y = x * torch.exp(-torch.abs(x) / self.t)        
         # Apply mode
         if self.mode == "pos":
             y = torch.where(x >= 0, y, torch.zeros_like(y))
         elif self.mode == "neg":
-            y = torch.where(x <= 0, y, torch.zeros_like(y))
-        
+            y = torch.where(x <= 0, y, torch.zeros_like(y))        
         return y
-    
+
     def extra_repr(self):
         return f"t={self.t}, mode={self.mode}"
 ```
@@ -45,6 +44,7 @@ class Ant(nn.Module):
 ```
 import tensorflow as tf
 from tensorflow.keras.layers import Layer
+
 class Ant(Layer):
     """Signal attenuation function: x * exp(-|x|/t)"""    
     def __init__(self, t=6.0, mode="both", **kwargs):
@@ -55,16 +55,20 @@ class Ant(Layer):
         """
         super(Ant, self).__init__(**kwargs)
         self.t = float(t)
-        self.mode = mode        
+        self.mode = mode
+        
     def call(self, inputs):
         # Core computation
-        y = inputs * tf.exp(-tf.abs(inputs) / self.t)        
+        y = inputs * tf.exp(-tf.abs(inputs) / self.t)
+        
         # Apply mode
         if self.mode == "pos":
             y = tf.where(inputs >= 0, y, tf.zeros_like(y))
         elif self.mode == "neg":
-            y = tf.where(inputs <= 0, y, tf.zeros_like(y))        
-        return y    
+            y = tf.where(inputs <= 0, y, tf.zeros_like(y))
+        
+        return y
+    
     def get_config(self):
         """Get layer configuration for serialization"""
         config = super(Ant, self).get_config()
@@ -72,13 +76,12 @@ class Ant(Layer):
             "t": self.t,
             "mode": self.mode
         })
-        return config    
-    def compute_output_shape(self, input_shape):
-        """Output shape is same as input shape"""
-        return input_shape
+        return config
 ```
 ## Citation：
+```
 Jiang W , Yuan H , Liu W .Neuron signal attenuation activation mechanism for deep learning[J].Patterns, 2025, 6(1),101117.DOI:10.1016/j.patter.2024.101117.
+```
 
 ## Development
 
