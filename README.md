@@ -11,9 +11,9 @@ Signal activation in neurons, whereby intricate biochemical pathways and signali
 <img width="986" height="1020" alt="image" src="https://github.com/user-attachments/assets/385468a5-0443-49d1-aa4b-52060aad130e" />
 
 ## Pytorch Implementation
+```
 import torch
 import torch.nn as nn
-
 class Ant(nn.Module):
     """Signal attenuation function: x * exp(-|x|/t)"""    
     def __init__(self, t=6.0, mode="both"):
@@ -40,8 +40,9 @@ class Ant(nn.Module):
     
     def extra_repr(self):
         return f"t={self.t}, mode={self.mode}"
-
+```
 ## TensorFlow Implementation
+```
 import tensorflow as tf
 from tensorflow.keras.layers import Layer
 class Ant(Layer):
@@ -75,7 +76,7 @@ class Ant(Layer):
     def compute_output_shape(self, input_shape):
         """Output shape is same as input shape"""
         return input_shape
-        
+```
 ## Citation：
 Jiang W , Yuan H , Liu W .Neuron signal attenuation activation mechanism for deep learning[J].Patterns, 2025, 6(1),101117.DOI:10.1016/j.patter.2024.101117.
 
