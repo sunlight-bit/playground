@@ -13,6 +13,7 @@ Signal activation in neurons, whereby intricate biochemical pathways and signali
 ## Pytorch Implementation
 import torch
 import torch.nn as nn
+
 class Ant(nn.Module):
     """Signal attenuation function: x * exp(-|x|/t)"""    
     def __init__(self, t=6.0, mode="both"):
@@ -23,16 +24,20 @@ class Ant(nn.Module):
         """
         super().__init__()
         self.t = t
-        self.mode = mode        
+        self.mode = mode
+        
     def forward(self, x):
         # Core computation
-        y = x * torch.exp(-torch.abs(x) / self.t)        
+        y = x * torch.exp(-torch.abs(x) / self.t)
+        
         # Apply mode
         if self.mode == "pos":
             y = torch.where(x >= 0, y, torch.zeros_like(y))
         elif self.mode == "neg":
-            y = torch.where(x <= 0, y, torch.zeros_like(y))        
-        return y    
+            y = torch.where(x <= 0, y, torch.zeros_like(y))
+        
+        return y
+    
     def extra_repr(self):
         return f"t={self.t}, mode={self.mode}"
 
