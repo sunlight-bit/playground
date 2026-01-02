@@ -17,28 +17,21 @@ import torch.nn as nn
 
 class Ant(nn.Module):
     """Signal attenuation function: x * exp(-|x|/t)"""    
-    def __init__(self, t=6.0, mode="both"):
+    def __init__(self, t=6.0):
         """
         Args:
         - t: float, attenuation rate (default: 6.0)
-        - mode: str, optional "both"|"pos"|"neg" (default: "both")
         """
         super().__init__()
         self.t = t
-        self.mode = mode
 
     def forward(self, x):
         # Core computation
-        y = x * torch.exp(-torch.abs(x) / self.t)        
-        # Apply mode
-        if self.mode == "pos":
-            y = torch.where(x >= 0, y, torch.zeros_like(y))
-        elif self.mode == "neg":
-            y = torch.where(x <= 0, y, torch.zeros_like(y))        
+        y = x * torch.exp(-torch.abs(x) / self.t)
         return y
 
     def extra_repr(self):
-        return f"t={self.t}, mode={self.mode}"
+        return f"t={self.t}"
 ```
 ## TensorFlow Implementation
 ```
@@ -47,34 +40,24 @@ from tensorflow.keras.layers import Layer
 
 class Ant(Layer):
     """Signal attenuation function: x * exp(-|x|/t)"""    
-    def __init__(self, t=6.0, mode="both", **kwargs):
+    def __init__(self, t=6.0, **kwargs):
         """
         Args:
         - t: float, attenuation rate (default: 6.0)
-        - mode: str, optional "both"|"pos"|"neg" (default: "both")
         """
         super(Ant, self).__init__(**kwargs)
         self.t = float(t)
-        self.mode = mode
         
     def call(self, inputs):
         # Core computation
         y = inputs * tf.exp(-tf.abs(inputs) / self.t)
-        
-        # Apply mode
-        if self.mode == "pos":
-            y = tf.where(inputs >= 0, y, tf.zeros_like(y))
-        elif self.mode == "neg":
-            y = tf.where(inputs <= 0, y, tf.zeros_like(y))
-        
         return y
     
     def get_config(self):
         """Get layer configuration for serialization"""
         config = super(Ant, self).get_config()
         config.update({
-            "t": self.t,
-            "mode": self.mode
+            "t": self.t
         })
         return config
 ```
