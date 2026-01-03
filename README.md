@@ -9,7 +9,57 @@ This repository contains the Ant for the paper [Neuron signal attenuation activa
 ## Introduction
 Signal activation in neurons, whereby intricate biochemical pathways and signaling mechanisms can produce different outputs from subtle changes, constitute complex systems to study. The output state varies based on activity patterns, reflecting plasticity. From neuroplasticity, neuron signal activation resembles a “black-box” core with dynamic input-output behavior, integrating and transforming signals from other neurons with varying transmission patterns. Although the neural mechanisms underlying this dynamic behavior are not fully understood, they reflect a wide range of neuronal properties. We test this hypothesis from a generalized linear system perspective by constructing computational models of neuronal activation, which enhances our understanding of the signal-processing properties of generalized neurons. Our results demonstrate strong performance across various neural network architectures.
 <img width="986" height="1020" alt="image" src="https://github.com/user-attachments/assets/385468a5-0443-49d1-aa4b-52060aad130e" />
+## Pytorch Implementation
+```
+import torch
+import torch.nn as nn
 
+class Ant(nn.Module):
+    """Signal attenuation function: x * exp(-|x|/t)"""    
+    def __init__(self, t=6.0):
+        """
+        Args:
+        - t: float, attenuation rate (default: 6.0)
+        """
+        super().__init__()
+        self.t = t
+
+    def forward(self, x):
+        # Core computation
+        y = x * torch.exp(-torch.abs(x) / self.t)
+        return y
+
+    def extra_repr(self):
+        return f"t={self.t}"
+```
+## TensorFlow Implementation
+```
+import tensorflow as tf
+from tensorflow.keras.layers import Layer
+
+class Ant(Layer):
+    """Signal attenuation function: x * exp(-|x|/t)"""    
+    def __init__(self, t=6.0, **kwargs):
+        """
+        Args:
+        - t: float, attenuation rate (default: 6.0)
+        """
+        super(Ant, self).__init__(**kwargs)
+        self.t = float(t)
+        
+    def call(self, inputs):
+        # Core computation
+        y = inputs * tf.exp(-tf.abs(inputs) / self.t)
+        return y
+    
+    def get_config(self):
+        """Get layer configuration for serialization"""
+        config = super(Ant, self).get_config()
+        config.update({
+            "t": self.t
+        })
+        return config
+```
 ## Citation：
 Jiang W , Yuan H , Liu W .Neuron signal attenuation activation mechanism for deep learning[J].Patterns, 2025, 6(1),101117.DOI:10.1016/j.patter.2024.101117.
 
